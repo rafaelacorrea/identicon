@@ -24,9 +24,9 @@ defmodule Identicon do
     %Image{image | color: {r, g, b}}
   end
 
-  def mirror_row([frst, scnd | _rest] = row), do: row ++ [scnd, frst]
+  defp mirror_row([frst, scnd | _rest] = row), do: row ++ [scnd, frst]
 
-  def build_grid(%Image{hex: hex} = image) do
+  defp build_grid(%Image{hex: hex} = image) do
     grid =
       hex
       |> Enum.chunk_every(3, 1, :discard)
