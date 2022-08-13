@@ -5,7 +5,9 @@ defmodule Identicon do
   alias Identicon.Image
 
   def main(input) do
-    hash_input(input)
+    input
+    |> hash_input()
+    |> pick_color()
   end
 
   defp hash_input(input) do
@@ -15,5 +17,9 @@ defmodule Identicon do
       |> :binary.bin_to_list()
 
     %Image{hex: hex}
+  end
+
+  defp pick_color(%Image{hex: [r, g, b | _rest]} = image) do
+    %Image{image | color: {r, g, b}}
   end
 end
