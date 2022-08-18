@@ -4,6 +4,7 @@ defmodule Identicon do
   """
   alias Identicon.Image
 
+  @spec main(String.t()) :: :ok
   def main(input) do
     input
     |> hash_input()
