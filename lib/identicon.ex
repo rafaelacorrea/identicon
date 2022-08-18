@@ -12,6 +12,7 @@ defmodule Identicon do
     |> filter_odd_squares()
     |> build_pixel_map()
     |> draw_image()
+    |> save_image(input)
   end
 
   defp hash_input(input) do
@@ -64,5 +65,9 @@ defmodule Identicon do
     color = :egd.color(color)
     Enum.each(pixel_map, fn {x, y} -> :egd.filledRectangle(imagem, x, y, color) end)
     :egd.render(imagem)
+  end
+
+  defp save_image(imagem, input) do
+    File.write("#{input}.png", imagem)
   end
 end
