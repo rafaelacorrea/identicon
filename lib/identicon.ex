@@ -24,9 +24,7 @@ defmodule Identicon do
     %Image{hex: hex}
   end
 
-  defp pick_color(%Image{hex: [r, g, b | _rest]} = image) do
-    %Image{image | color: {r, g, b}}
-  end
+  defp pick_color(%Image{hex: [r, g, b | _rest]} = image), do: %Image{image | color: {r, g, b}}
 
   defp mirror_row([frst, scnd | _rest] = row), do: row ++ [scnd, frst]
 
@@ -67,7 +65,5 @@ defmodule Identicon do
     :egd.render(imagem)
   end
 
-  defp save_image(imagem, input) do
-    File.write("#{input}.png", imagem)
-  end
+  defp save_image(imagem, input), do: File.write("#{input}.png", imagem)
 end
