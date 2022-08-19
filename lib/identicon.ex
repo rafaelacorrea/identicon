@@ -5,7 +5,7 @@ defmodule Identicon do
   alias Identicon.Image
 
   @spec main(String.t()) :: :ok
-  def main(input) do
+  def main(input) when is_binary(input) do
     input
     |> hash_input()
     |> pick_color()
@@ -15,6 +15,9 @@ defmodule Identicon do
     |> draw_image()
     |> save_image(input)
   end
+
+  @spec main(any) :: :error
+  def main(_), do: {:error, "insert a string valid value!"}
 
   defp hash_input(input) do
     hex =
