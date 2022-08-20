@@ -1,10 +1,24 @@
 defmodule Identicon do
   @moduledoc """
-  Documentation for `Identicon`.
+  This module transforms a received string into a pixeled image.
   """
   alias Identicon.Image
 
-  @spec main(String.t()) :: :ok
+  @doc """
+  Returns :ok if successed or tuple with :error and a mensage.
+
+  the input might be a string
+
+  ## Examples
+
+      iex> Identicon.main("Olá")
+      :ok
+
+      iex> Identicon.main({"Olá"})
+      {:error, "insert a string valid value!"}
+  """
+
+  @spec main(String.t()) :: :ok | {:error, String.t()}
   def main(input) when is_binary(input) do
     input
     |> hash_input()
@@ -16,7 +30,6 @@ defmodule Identicon do
     |> save_image(input)
   end
 
-  @spec main(any) :: :error
   def main(_), do: {:error, "insert a string valid value!"}
 
   defp hash_input(input) do
@@ -62,12 +75,12 @@ defmodule Identicon do
     %Image{image | pixel_map: pixel_map}
   end
 
-  defp draw_image(%Image{color: color, pixel_map: pixel_map} = image) do
-    imagem = :egd.create(250, 250)
+  defp draw_image(%Image{color: color, pixel_map: pixel_map}) do
+    image = :egd.create(250, 250)
     color = :egd.color(color)
-    Enum.each(pixel_map, fn {x, y} -> :egd.filledRectangle(imagem, x, y, color) end)
-    :egd.render(imagem)
+    Enum.each(pixel_map, fn {x, y} -> :egd.filledRectangle(image, x, y, color) end)
+    :egd.render(image)
   end
 
-  defp save_image(imagem, input), do: File.write("#{input}.png", imagem)
+  defp save_image(image, input), do: File.write("#{input}.png", image)
 end

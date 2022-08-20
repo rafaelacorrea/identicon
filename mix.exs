@@ -1,13 +1,20 @@
 defmodule Identicon.MixProject do
   use Mix.Project
 
+  @source_url "https://github.com/rafaelacorrea/identicon"
+  @version "0.1.0"
+
   def project do
     [
       app: :identicon,
-      version: "0.1.0",
+      version: @version,
       elixir: "~> 1.13",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      docs: docs(),
+      name: "Identicon",
+      source_url: @source_url,
+      description: "Identicon ia a identicon generator"
     ]
   end
 
@@ -21,7 +28,17 @@ defmodule Identicon.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:egd, github: "erlang/egd"}
+      {:egd, github: "erlang/egd"},
+      {:ex_doc, "~> 0.27", only: :dev, runtime: false}
+    ]
+  end
+
+  defp docs do
+    [
+      main: "readme",
+      extras: ["README.md"],
+      source_ref: "v#{@version}",
+      source_url: @source_url
     ]
   end
 end
