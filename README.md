@@ -1,21 +1,25 @@
 # Identicon
 
-**TODO: Add description**
-
 ## Installation
+```bash
+git clone https://github.com/rafaelacorrea/identicon
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `identicon` to your list of dependencies in `mix.exs`:
+cd identicon
 
-```elixir
-def deps do
-  [
-    {:identicon, "~> 0.1.0"}
-  ]
-end
+mix deps.get
 ```
+## Run
+In the identicon directory, execute the command:
+```bash
+iex -S mix
+```
+When the iex is activate, we add the command below to generate a identicon with inserted string:
+```elixir
+iex> Identicon.main("Shooky")
+:ok
+```
+It will return a png:
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/identicon>.
-
+<br>
+  <img height="200" src=".github/Shooky.png" alt="Shooky.png">
+  <br>
