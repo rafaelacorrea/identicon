@@ -14,7 +14,15 @@ defmodule Identicon.MixProject do
       docs: docs(),
       name: "Identicon",
       source_url: @source_url,
-      description: "Identicon ia a identicon generator"
+      description: "Identicon ia a identicon generator",
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.json": :test,
+        "coveralls.html": :test
+      ]
     ]
   end
 
@@ -29,7 +37,8 @@ defmodule Identicon.MixProject do
   defp deps do
     [
       {:egd, github: "erlang/egd"},
-      {:ex_doc, "~> 0.27", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.27", only: :dev, runtime: false},
+      {:excoveralls, "~> 0.10", only: :test}
     ]
   end
 
