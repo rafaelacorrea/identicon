@@ -1,4 +1,6 @@
 # Identicon
+[![Continuous Integration](https://github.com/rafaelacorrea/identicon/actions/workflows/ci.yml/badge.svg)](https://github.com/rafaelacorrea/identicon/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/rafaelacorrea/identicon/branch/main/graph/badge.svg?token=YM35W4G9ZD)](https://codecov.io/gh/rafaelacorrea/identicon)
 
 ## Installation
 ```bash
